@@ -2,8 +2,8 @@ name: Update README cards
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # 毎日0時に自動実行
-  workflow_dispatch:  # 手動実行も可能
+    - cron: "0 0 * * *"
+  workflow_dispatch:
 
 jobs:
   build:
@@ -36,21 +36,3 @@ jobs:
           git add profile/
           git diff --staged --quiet || git commit -m "chore: update readme stats"
           git push
-```
-
-**手順2：手動で初回実行**
-
-1. リポジトリの **Actions** タブを開く
-2. 左側の **「Update README cards」** を選択
-3. **「Run workflow」** ボタンをクリック
-
-これで `profile/stats.svg` と `profile/top-langs.svg` が生成されます。
-
-**手順3：READMEの画像URLを変更**
-```
-# 変更前（外部API）
-https://github-readme-stats.vercel.app/api?username=norman6464...
-
-# 変更後（リポジトリ内のSVG）
-./profile/stats.svg
-./profile/top-langs.svg
